@@ -4,8 +4,8 @@ from pygame.locals import *
 import time
 import random
 
-from coordinates import *
-from game_over import *
+from src.coordinates import *
+from src.game_over import *
 
 
 # ================================================
