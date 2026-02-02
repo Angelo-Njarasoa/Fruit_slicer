@@ -1,6 +1,6 @@
-from menu import *
-from gameplay_typing import gameplay_typing
-from game_over import game_over
+from src.menu import *
+from src.gameplay_typing import gameplay_typing
+from src.game_over import game_over
 
 pygame.init()
 screen = pygame.display.set_mode((1000, 800))
