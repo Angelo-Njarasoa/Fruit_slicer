@@ -1,6 +1,6 @@
 import pygame
-from gameplay_typing import *
-# from final_score import *
+from src.gameplay_typing import *
+
 
 vie=0
 def game_over(screen,score: int = 0):

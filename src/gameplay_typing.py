@@ -21,7 +21,6 @@ FRUIT_SIZE = (100, 100)
 
 SCORE_FONT_SIZE = 40
 BOMB_FONT_SIZE  = 80
-BOMB_LETTER = "B"
 BOMB_COLOR = (255, 220, 80)
 
 ALL_STATES = ["pineapple", "watermelon", "ice", "bomb", "apple", "lemon"]
@@ -32,7 +31,7 @@ def gameplay_typing(screen=None):
     police = pygame.font.SysFont("arial", SCORE_FONT_SIZE)
 
     # Load and scale images
-    ball = pygame.image.load("pasteque-removebg-preview.png").convert_alpha()
+    ball = pygame.image.load("Assets/images/pasteque-removebg-preview.png").convert_alpha()
     ball = pygame.transform.scale(ball, FRUIT_SIZE)
 
     pineaple = pygame.image.load("Assets/images/removepine.png").convert_alpha()
@@ -61,13 +60,6 @@ def gameplay_typing(screen=None):
     rect       = ball.get_rect()
     apple_rect = apple.get_rect()
     lemon_rect = lemon.get_rect()
-   
-
-    # Bomb letter
-    lettre = BOMB_LETTER
-    font = pygame.font.SysFont("arial", BOMB_FONT_SIZE, bold=True)
-    text = font.render(lettre, True, BOMB_COLOR)
-    text_rect = text.get_rect()
 
     # Backgrounds
     background = pygame.image.load("Assets/images/tropic_img.png").convert()
@@ -295,11 +287,8 @@ def gameplay_typing(screen=None):
         # Game Over check
         if strikes <= 0:
             if strikes <= 0 and running:
-                with open("final_score.py", "w", encoding="utf-8") as f:
-                    f.write(f"# Last score recorded on {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
-                    f.write(f"score_game = [{v}]\n")
-                print(f"Final score saved: {v}")
-            return v
+               
+                return v
 
         pygame.display.update()
 
