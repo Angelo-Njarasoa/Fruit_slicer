@@ -1,0 +1,854 @@
+# import pygame
+# from pygame.locals import *
+# import time
+# from  coordinates import *
+# import random
+# from game_over import *
+# def gameplay_typing(screen=None) :
+#     # pygame.init()
+
+# # windiw
+#     # size = 1000, 800
+#     # screen = pygame.display.set_mode(size)
+#     pygame.display.set_caption("Gameplay")
+#     police=pygame.font.SysFont("arial", 40)
+
+#     RED = (255, 0, 0)
+#     GREEN =(150,255,150)
+
+# # Img
+#     ball = pygame.image.load("pasteque-removebg-preview.png").convert_alpha()
+#     ball = pygame.transform.scale(ball, (100, 100))
+#     pineaple= pygame.image.load("Assets/images/removepine.png").convert_alpha()
+#     pineaple = pygame.transform.scale(pineaple, (100, 100))
+#     heart= pygame.image.load("Assets/images/heart-removebg-preview.png").convert_alpha()
+#     heart= pygame.transform.scale(heart, (100, 100))
+#     ice=pygame.image.load("Assets/images/iceCut-removebg-preview.png").convert_alpha()
+#     ice =pygame.transform.scale(ice,(100,100))
+#     bomb = pygame.image.load("Assets/images/bomb-removebg-preview.png").convert_alpha()
+#     bomb = pygame.transform.scale(bomb, (100, 100))
+#     bomb_rect=bomb.get_rect()
+#     ice_rect=ice.get_rect()
+#     lettre="B"
+#     font = pygame.font.SysFont("arial", 80, bold=True)
+#     text = font.render(lettre, True, (255, 220, 80))
+#     text_rect = text.get_rect()
+
+#     rect_heart=heart.get_rect()
+#     rect_pine= pineaple.get_rect()
+#     rect=ball.get_rect()
+#     rect2=Rect(20, 5, 80, 25)
+
+
+
+
+#     background=pygame.image.load("Assets/images/tropic_img.png").convert()
+#     background=pygame.transform.scale(background,(1000,800))
+
+
+
+#     path=[]
+#     path_index = 0   
+#     path_index3=0
+#     path_index4=0
+#     path_index5=0
+#     path2=[]
+#     clock = pygame.time.Clock()
+#     running = True
+#     path_index2=0
+#     v=0
+#     strikes=3
+#     all_states=["pineapple","watermelon","ice","bomb"]
+#     all_path = [
+#         weird_move,
+#         classic_move,
+#         coordinates2,
+#         cordinate3,
+#         cordinate_jump,
+#         trajectoire_325,
+#         trajectoire_465,
+#         trajectoire_600,
+#         trajectoire_670,
+#         trajectoire_735,
+#         trajectoire_900,
+#         coordinate_left,
+#         trajectoire_y320,
+#         trajectoire_y400,
+#         trajectoire_y750,
+#         cordinate_Right,
+#         trajectoire_nouvelle,
+#         trajectoire_y200,
+#     ]
+#     path =random.choice(all_path)
+#     path3 = random.choice(all_path)
+#     path4= random.choice(all_path)
+#     path5= random.choice(all_path)
+# #music
+
+#     weathers="good"
+#     background2=pygame.image.load("Assets/images/winter.png").convert()
+#     background2=pygame.transform.scale(background2,(1000,800))
+#     ice_mode= False
+#     state="watermelon"
+#     pygame.mixer.init()
+#     pygame.mixer.music.load("Assets/game_music.mp3")
+#     pygame.mixer.music.set_volume(0.1)
+#     pygame.mixer.music.play(-1)
+#     # score_gm
+#     # score_gm=vstr
+#     while running:
+#         clock.tick(110)
+
+
+#         for event in pygame.event.get():
+#             if event.type == QUIT:
+#                 return v
+#             if event.type==KEYDOWN:
+#                 if event.key==K_p:
+#                     v+=10
+#                     time.sleep(0.3)
+#                     path_index=0
+#                     state=random.choice(all_states)
+                
+#                 elif event.key==K_a:
+#                     v+=10
+#                     time.sleep(0.3)
+#                     path_index3=0
+#                     state=random.choice(all_states)
+                
+#                 elif event.key==K_b:
+#                     path_index5=0
+#                     strikes-=3
+#                     #game_over()
+#                     time.sleep(0.3)
+                    
+              
+
+#                 elif event.key==K_i:
+#                     ice_mode = True
+#                     path_index4=0
+#                     state=random.choice(all_states)
+#                     time.sleep(4)                
+        
+#         scoretxt =police.render("score:",True, RED,)
+#         vstr=str(v)
+#         score_nb=police.render(vstr, True, (255, 0, 0))
+    
+#     # trajectory
+  
+#         if path_index >= len(path):
+#             strikes-=1
+#             path =random.choice(all_path)
+#             state=random.choice(all_states)
+#             path_index=0  
+
+#         if path_index3 >= len(path3):
+#             strikes-=1
+#             path3=random.choice(all_path)
+#             state=random.choice(all_states)
+#             path_index3=0
+
+#         if path_index4 >= len(path4):
+#             path3=random.choice(all_path)
+#             state=random.choice(all_states)
+#             path_index4=0
+        
+        
+#         if path_index5 >= len(path5):
+#             path3=random.choice(all_path)
+#             state=random.choice(all_states)
+#             path_index5=0
+
+#         screen.fill(RED)
+        
+#         if ice_mode:
+#             screen.blit(background2, (0, 0))
+           
+            
+#         else:
+#             screen.blit(background, (0, 0))
+       
+       
+#         ice_mode=False   
+            
+        
+        
+#         screen.blit(scoretxt,(400,10))
+#         screen.blit(score_nb, (500, 10))
+#         if strikes ==3: 
+#             screen.blit(heart,(325,55))
+#         if strikes > 1:
+#             screen.blit(heart,(395,55))
+#         if strikes  >0 :
+#             screen.blit(heart,(475,55))
+#    #pop-up
+    
+#         if state=="watermelon":
+            
+#             if path_index < len(path):
+#                 rect.center = path[path_index]
+#                 path_index += 1
+           
+#             else:
+#                 strikes -= 1
+#                 path = random.choice(all_path)
+#                 path_index = 0
+#                 rect.center = path[path_index]
+
+#             screen.blit(ball,rect) 
+               
+#         if state == "pineapple":
+#             if path_index3 < len(path3):
+#                 rect_pine.center = path3[path_index3]
+#                 path_index3 += 1
+            
+#             else:
+#                 path_index3 = 0
+#                 strikes -= 1
+#                 path3 = random.choice(all_path)
+#                 rect_pine.center = path3[path_index3]
+#             screen.blit(pineaple,rect_pine)
+#         if state == "ice":
+#             if path_index4 < len(path4):
+#                 ice_rect.center = path4[path_index4]
+#                 path_index4+=1
+#             else:
+#                 path_index4 = 0
+#                 path4 = random.choice(all_path)
+#                 ice_rect.center = path4[path_index4]
+#             screen.blit(ice,ice_rect)
+#         if state == "bomb":
+#             if path_index5 < len(path5):
+#                 bomb_rect.center = path5[path_index5]
+#                 path_index5+=1
+#             else:
+#                 path_index5 = 0
+#                 path5 = random.choice(all_path)
+#                 bomb_rect.center = path5[path_index5]
+#                 text_rect.center= path5[path_index5]
+#             screen.blit(bomb,bomb_rect)
+#             screen.blit(text,text_rect)
+#         if strikes <= 0 :
+            
+#             if strikes <= 0 and running:
+#                 with open("final_score.py", "w", encoding="utf-8") as f:
+#                     f.write(f"# Dernier score enregistré le {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+#                     f.write(f"score_game = [{v}]\n")
+    
+#                     print(f"Score final sauvegardé : {v}")
+#             pygame.quit
+#             return v
+            
+                    
+            
+
+    
+ 
+
+   
+    
+    
+#         pygame.display.update()
+
+#     # pygame.quit()
+#     return v
+
+
+# import pygame
+# from pygame.locals import *
+# import time
+# import random
+
+# from coordinates import *
+# from game_over import *
+
+
+
+# def gameplay_typing(screen=None):
+#     # ================================================
+#     # Configuration de la fenêtre et affichage
+#     # ================================================
+#     pygame.display.set_caption("Gameplay")
+#     police = pygame.font.SysFont("arial", 40)
+
+#     RED   = (255, 0, 0)
+#     GREEN = (150, 255, 150)
+
+#     # ================================================
+#     # Chargement et préparation des images
+#     # ================================================
+#     ball = pygame.image.load("pasteque-removebg-preview.png").convert_alpha()
+#     ball = pygame.transform.scale(ball, (100, 100))
+
+#     pineaple = pygame.image.load("Assets/images/removepine.png").convert_alpha()
+#     pineaple = pygame.transform.scale(pineaple, (100, 100))
+
+#     heart = pygame.image.load("Assets/images/heart-removebg-preview.png").convert_alpha()
+#     heart = pygame.transform.scale(heart, (100, 100))
+
+#     ice = pygame.image.load("Assets/images/iceCut-removebg-preview.png").convert_alpha()
+#     ice = pygame.transform.scale(ice, (100, 100))
+
+#     bomb = pygame.image.load("Assets/images/bomb-removebg-preview.png").convert_alpha()
+#     bomb = pygame.transform.scale(bomb, (100, 100))
+
+#     apple = pygame.image.load("Assets/images/appaleCut-removebg-preview.png").convert_alpha()
+#     apple= pygame.transform.scale(apple, (100, 100))
+#     # Rects réutilisables
+#     bomb_rect = bomb.get_rect()
+#     ice_rect  = ice.get_rect()
+#     rect_heart = heart.get_rect()
+#     rect_pine  = pineaple.get_rect()
+#     rect       = ball.get_rect()
+#     ap_rect = apple.get_rect()
+
+    
+   
+
+#     # Bombe lettre
+#     lettre = "B"
+#     font = pygame.font.SysFont("arial", 80, bold=True)
+#     text = font.render(lettre, True, (255, 220, 80))
+#     text_rect = text.get_rect()
+
+#     # ================================================
+#     # Fonds d'écran
+#     # ================================================
+#     background = pygame.image.load("Assets/images/tropic_img.png").convert()
+#     background = pygame.transform.scale(background, (1000, 800))
+
+#     background2 = pygame.image.load("Assets/images/winter.png").convert()
+#     background2 = pygame.transform.scale(background2, (1000, 800))
+
+#     # ================================================
+#     # Variables de jeu
+#     # ================================================
+#     clock = pygame.time.Clock()
+#     running = True
+
+#     v = 0
+#     strikes = 3
+#     ice_mode = False
+#     state = "watermelon"
+
+#     all_states = ["pineapple", "watermelon", "ice", "bomb","apple"]
+
+#     all_path = [
+#         weird_move,
+#         classic_move,
+#         coordinates2,
+#         cordinate3,
+#         cordinate_jump,
+#         trajectoire_325,
+#         trajectoire_465,
+#         trajectoire_600,
+#         trajectoire_670,
+#         trajectoire_735,
+#         trajectoire_900,
+#         coordinate_left,
+#         trajectoire_y320,
+#         trajectoire_y400,
+#         trajectoire_y750,
+#         cordinate_Right,
+#         trajectoire_nouvelle,
+#         trajectoire_y200,
+#     ]
+
+#     # Chemins et indices initiaux
+#     path   = random.choice(all_path)
+#     path3  = random.choice(all_path)
+#     path4  = random.choice(all_path)
+#     path5  = random.choice(all_path)
+#     path6 =random.choice(all_path)
+
+#     path_index  = 0
+#     path_index3 = 0
+#     path_index4 = 0
+#     path_index5 = 0
+#     path_index6= 0
+
+#     # ================================================
+#     # Musique
+#     # ================================================
+#     pygame.mixer.init()
+#     pygame.mixer.music.load("Assets/game_music.mp3")
+#     pygame.mixer.music.set_volume(0.1)
+#     pygame.mixer.music.play(-1)
+
+#     # ================================================
+#     # Boucle principale
+#     # ================================================
+#     while running:
+#         clock.tick(110)
+
+#         # ------------------------------
+#         # Événements
+#         # ------------------------------
+#         for event in pygame.event.get():
+#             if event.type == QUIT:
+#                 return v
+
+#             if event.type == KEYDOWN:
+#                 if event.key == K_p:
+#                     v += 10
+#                     time.sleep(0.3)
+#                     path_index = 0
+#                     state = random.choice(all_states)
+
+#                 elif event.key == K_a:
+#                     v += 10
+#                     time.sleep(0.3)
+#                     path_index3 = 0
+#                     state = random.choice(all_states)
+
+#                 elif event.key == K_b:
+#                     path_index5 = 0
+#                     strikes -= 3
+#                     time.sleep(0.3)
+#                 elif event.key == K_a:
+#                     v += 10
+#                     time.sleep(0.3)
+#                     path_index6 = 0
+#                     state = random.choice(all_states)
+        
+
+#                 elif event.key == K_i:
+#                     ice_mode = True
+#                     path_index4 = 0
+#                     state = random.choice(all_states)
+#                     time.sleep(4)
+
+#         # ------------------------------
+#         # Affichage score
+#         # ------------------------------
+#         scoretxt = police.render("score:", True, RED)
+#         vstr = str(v)
+#         score_nb = police.render(vstr, True, (255, 0, 0))
+
+#         # ------------------------------
+#         # Gestion fin de trajectoire
+#         # ------------------------------
+#         if path_index >= len(path):
+#             strikes -= 1
+#             path = random.choice(all_path)
+#             state = random.choice(all_states)
+#             path_index = 0
+
+#         if path_index3 >= len(path3):
+#             strikes -= 1
+#             path3 = random.choice(all_path)
+#             state = random.choice(all_states)
+#             path_index3 = 0
+
+#         if path_index4 >= len(path4):
+#             path4 = random.choice(all_path)
+#             state = random.choice(all_states)
+#             path_index4 = 0
+
+#         if path_index5 >= len(path5):
+#             path5 = random.choice(all_path)
+#             state = random.choice(all_states)
+#             path_index5 = 0
+        
+#         if path_index6 >= len(path6):
+#             strikes -= 1
+#             path6 = random.choice(all_path)
+#             state = random.choice(all_states)
+#             path_index = 0
+
+#         # ------------------------------
+#         # Affichage fond
+#         # ------------------------------
+#         screen.fill(RED)
+
+#         if ice_mode:
+#             screen.blit(background2, (0, 0))
+#         else:
+#             screen.blit(background, (0, 0))
+
+#         ice_mode = False
+
+#         # ------------------------------
+#         # HUD : score + cœurs
+#         # ------------------------------
+#         screen.blit(scoretxt, (400, 10))
+#         screen.blit(score_nb, (500, 10))
+
+#         if strikes == 3:
+#             screen.blit(heart, (325, 55))
+#         if strikes > 1:
+#             screen.blit(heart, (395, 55))
+#         if strikes > 0:
+#             screen.blit(heart, (475, 55))
+
+#         # ------------------------------
+#         # Affichage des fruits selon état
+#         # ------------------------------
+#         if state == "watermelon":
+#             if path_index < len(path):
+#                 rect.center = path[path_index]
+#                 path_index += 1
+#             else:
+#                 strikes -= 1
+#                 path = random.choice(all_path)
+#                 path_index = 0
+#                 rect.center = path[path_index]
+#             screen.blit(ball, rect)
+
+#         if state == "pineapple":
+#             if path_index3 < len(path3):
+#                 rect_pine.center = path3[path_index3]
+#                 path_index3 += 1
+#             else:
+#                 path_index3 = 0
+#                 strikes -= 1
+#                 path3 = random.choice(all_path)
+#                 rect_pine.center = path3[path_index3]
+#             screen.blit(pineaple, rect_pine)
+
+#         if state == "ice":
+#             if path_index4 < len(path4):
+#                 ice_rect.center = path4[path_index4]
+#                 path_index4 += 1
+#             else:
+#                 path_index4 = 0
+#                 path4 = random.choice(all_path)
+#                 ice_rect.center = path4[path_index4]
+#             screen.blit(ice, ice_rect)
+
+#         if state == "bomb":
+#             if path_index5 < len(path5):
+#                 bomb_rect.center = path5[path_index5]
+#                 path_index5 += 1
+#             else:
+#                 path_index5 = 0
+#                 path5 = random.choice(all_path)
+#                 bomb_rect.center = path5[path_index5]
+#             screen.blit(bomb,bomb_rect)
+
+#         if state == "apple":
+#             if path_index6 < len(path6):
+#                 ap_rect.center = path6[path_index6]
+#                 path_index6 += 1
+#             else:
+#                 path_index6 = 0
+#                 path6 = random.choice(all_path)
+#                 ap_rect.center = path6[path_index6]
+#             screen.blit(apple, ap_rect)
+            
+
+#         # ------------------------------
+#         # Game Over
+#         # ------------------------------
+#         if strikes <= 0:
+#             if strikes <= 0 and running:
+#                 return v
+
+#         pygame.display.update()
+
+#     return v 
+import pygame
+from pygame.locals import *
+import time
+import random
+
+from coordinates import *
+from game_over import *
+
+
+# ================================================
+# Constants
+# ================================================
+WINDOW_SIZE = (1000, 800)
+CAPTION = "Gameplay"
+
+RED   = (255, 0, 0)
+GREEN = (150, 255, 150)
+
+FRUIT_SIZE = (100, 100)
+
+SCORE_FONT_SIZE = 40
+BOMB_FONT_SIZE  = 80
+BOMB_LETTER = "B"
+BOMB_COLOR = (255, 220, 80)
+
+ALL_STATES = ["pineapple", "watermelon", "ice", "bomb", "apple", "lemon"]
+
+
+def gameplay_typing(screen=None):
+    pygame.display.set_caption(CAPTION)
+    police = pygame.font.SysFont("arial", SCORE_FONT_SIZE)
+
+    # Load and scale images
+    ball = pygame.image.load("pasteque-removebg-preview.png").convert_alpha()
+    ball = pygame.transform.scale(ball, FRUIT_SIZE)
+
+    pineaple = pygame.image.load("Assets/images/removepine.png").convert_alpha()
+    pineaple = pygame.transform.scale(pineaple, FRUIT_SIZE)
+
+    heart = pygame.image.load("Assets/images/heart-removebg-preview.png").convert_alpha()
+    heart = pygame.transform.scale(heart, FRUIT_SIZE)
+
+    ice = pygame.image.load("Assets/images/iceCut-removebg-preview.png").convert_alpha()
+    ice = pygame.transform.scale(ice, FRUIT_SIZE)
+
+    bomb = pygame.image.load("Assets/images/bomb-removebg-preview.png").convert_alpha()
+    bomb = pygame.transform.scale(bomb, FRUIT_SIZE)
+
+    apple = pygame.image.load("Assets/images/appaleCut-removebg-preview.png").convert_alpha()
+    apple = pygame.transform.scale(apple, FRUIT_SIZE)
+
+    lemon = pygame.image.load("Assets/images/lemon-removebg-preview.png").convert_alpha()
+    lemon = pygame.transform.scale(lemon, FRUIT_SIZE)
+
+    # Reusable rects
+    bomb_rect = bomb.get_rect()
+    ice_rect  = ice.get_rect()
+    rect_heart = heart.get_rect()
+    rect_pine  = pineaple.get_rect()
+    rect       = ball.get_rect()
+    apple_rect = apple.get_rect()
+    lemon_rect = lemon.get_rect()
+   
+
+    # Bomb letter
+    lettre = BOMB_LETTER
+    font = pygame.font.SysFont("arial", BOMB_FONT_SIZE, bold=True)
+    text = font.render(lettre, True, BOMB_COLOR)
+    text_rect = text.get_rect()
+
+    # Backgrounds
+    background = pygame.image.load("Assets/images/tropic_img.png").convert()
+    background = pygame.transform.scale(background, WINDOW_SIZE)
+
+    background2 = pygame.image.load("Assets/images/winter.png").convert()
+    background2 = pygame.transform.scale(background2, WINDOW_SIZE)
+
+    # Game variables
+    clock = pygame.time.Clock()
+    running = True
+
+    v = 0
+    strikes = 3
+    ice_mode = False
+    state = "watermelon"
+
+    all_path = [
+        weird_move,
+        classic_move,
+        coordinates2,
+        cordinate3,
+        cordinate_jump,
+        trajectoire_325,
+        trajectoire_465,
+        trajectoire_600,
+        trajectoire_670,
+        trajectoire_735,
+        trajectoire_900,
+        coordinate_left,
+        trajectoire_y320,
+        trajectoire_y400,
+        trajectoire_y750,
+        cordinate_Right,
+        trajectoire_nouvelle,
+        trajectoire_y200,
+    ]
+
+    path   = random.choice(all_path)
+    path3  = random.choice(all_path)
+    path4  = random.choice(all_path)
+    path5  = random.choice(all_path)
+    path6  = random.choice(all_path)   # apple
+    path7  = random.choice(all_path)   # lemon
+
+    path_index  = 0
+    path_index3 = 0
+    path_index4 = 0
+    path_index5 = 0
+    path_index6 = 0
+    path_index7 = 0
+
+    # Music
+    pygame.mixer.init()
+    pygame.mixer.music.load("Assets/game_music.mp3")
+    pygame.mixer.music.set_volume(0.1)
+    pygame.mixer.music.play(-1)
+
+    while running:
+        clock.tick(110)
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                return v
+
+            if event.type == KEYDOWN:
+                if event.key == K_p:
+                    v += 10
+                    time.sleep(0.3)
+                    path_index = 0
+                    state = random.choice(ALL_STATES)
+
+                elif event.key == K_a:
+                    v += 10
+                    time.sleep(0.3)
+                    path_index3 = 0
+                    state = random.choice(ALL_STATES)
+
+                elif event.key == K_b:
+                    path_index5 = 0
+                    strikes -= 3
+                    time.sleep(0.3)
+
+                elif event.key == K_p:
+                    v += 10
+                    time.sleep(0.3)
+                    path_index6 = 0
+                    state = random.choice(ALL_STATES)
+
+                elif event.key == K_c:          # Touche L pour citron
+                    v += 10
+                    time.sleep(0.3)
+                    path_index7 = 0
+                    state = random.choice(ALL_STATES)
+
+                elif event.key == K_g:
+                    ice_mode = True
+                    path_index4 = 0
+                    state = random.choice(ALL_STATES)
+                    time.sleep(4)
+
+        scoretxt = police.render("score:", True, RED)
+        vstr = str(v)
+        score_nb = police.render(vstr, True, (255, 0, 0))
+
+        # Trajectory end checks
+        if path_index >= len(path):
+            strikes -= 1
+            path = random.choice(all_path)
+            state = random.choice(ALL_STATES)
+            path_index = 0
+
+        if path_index3 >= len(path3):
+            strikes -= 1
+            path3 = random.choice(all_path)
+            state = random.choice(ALL_STATES)
+            path_index3 = 0
+
+        if path_index4 >= len(path4):
+            path4 = random.choice(all_path)
+            state = random.choice(ALL_STATES)
+            path_index4 = 0
+
+        if path_index5 >= len(path5):
+            path5 = random.choice(all_path)
+            state = random.choice(ALL_STATES)
+            path_index5 = 0
+
+        if path_index6 >= len(path6):
+            strikes -= 1
+            path6 = random.choice(all_path)
+            state = random.choice(ALL_STATES)
+            path_index6 = 0
+
+        if path_index7 >= len(path7):
+            strikes -= 1
+            path7 = random.choice(all_path)
+            state = random.choice(ALL_STATES)
+            path_index7 = 0
+
+        screen.fill(RED)
+
+        if ice_mode:
+            screen.blit(background2, (0, 0))
+        else:
+            screen.blit(background, (0, 0))
+
+        ice_mode = False
+
+        screen.blit(scoretxt, (400, 10))
+        screen.blit(score_nb, (500, 10))
+
+        if strikes == 3:
+            screen.blit(heart, (325, 55))
+        if strikes > 1:
+            screen.blit(heart, (395, 55))
+        if strikes > 0:
+            screen.blit(heart, (475, 55))
+
+        # Fruit display based on current state
+        if state == "watermelon":
+            if path_index < len(path):
+                rect.center = path[path_index]
+                path_index += 1
+            else:
+                strikes -= 1
+                path = random.choice(all_path)
+                path_index = 0
+                rect.center = path[path_index]
+            screen.blit(ball, rect)
+
+        if state == "pineapple":
+            if path_index3 < len(path3):
+                rect_pine.center = path3[path_index3]
+                path_index3 += 1
+            else:
+                path_index3 = 0
+                strikes -= 1
+                path3 = random.choice(all_path)
+                rect_pine.center = path3[path_index3]
+            screen.blit(pineaple, rect_pine)
+
+        if state == "ice":
+            if path_index4 < len(path4):
+                ice_rect.center = path4[path_index4]
+                path_index4 += 1
+            else:
+                path_index4 = 0
+                path4 = random.choice(all_path)
+                ice_rect.center = path4[path_index4]
+            screen.blit(ice, ice_rect)
+
+        if state == "bomb":
+            if path_index5 < len(path5):
+                bomb_rect.center = path5[path_index5]
+                path_index5 += 1
+            else:
+                path_index5 = 0
+                path5 = random.choice(all_path)
+                bomb_rect.center = path5[path_index5]
+                text_rect.center = path5[path_index5]
+            screen.blit(bomb, bomb_rect)
+         
+
+        if state == "apple":
+            if path_index6 < len(path6):
+                apple_rect.center = path6[path_index6]
+                path_index6 += 1
+            else:
+                path_index6 = 0
+                path6 = random.choice(all_path)
+                apple_rect.center = path6[path_index6]
+            screen.blit(apple, apple_rect)
+
+        if state == "lemon":
+            if path_index7 < len(path7):
+                lemon_rect.center = path7[path_index7]
+                path_index7 += 1
+            else:
+                path_index7 = 0
+                path7 = random.choice(all_path)
+                lemon_rect.center = path7[path_index7]
+            screen.blit(lemon, lemon_rect)
+
+        # Game Over check
+        if strikes <= 0:
+            if strikes <= 0 and running:
+                with open("final_score.py", "w", encoding="utf-8") as f:
+                    f.write(f"# Last score recorded on {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                    f.write(f"score_game = [{v}]\n")
+                print(f"Final score saved: {v}")
+            return v
+
+        pygame.display.update()
+
+    return v
